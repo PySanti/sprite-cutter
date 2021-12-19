@@ -88,13 +88,14 @@ FolderName      = getFolderName()
 current_posicion = [0,0]
 terminal(f"mkdir {FolderName}")
 counter = 1
-while current_posicion[0] < SpriteSheet.get_width():
-    current_rect = pygame.Rect(current_posicion[0], current_posicion[1], ImagesSize[0], ImagesSize[1])
-    new_sprite = SpriteSheet.subsurface(current_rect)
-    print(new_sprite)
-    current_posicion[0] += ImagesSize[0] + ImagesSpaceDiff
-    pygame.image.save(new_sprite, f"{FolderName}/{counter}.png")
-    counter += 1
+while True:
+    try:
+        current_rect = pygame.Rect(current_posicion[0], current_posicion[1], ImagesSize[0], ImagesSize[1])
+        new_sprite = SpriteSheet.subsurface(current_rect)
+        current_posicion[0] += ImagesSize[0] + ImagesSpaceDiff
+        pygame.image.save(new_sprite, f"{FolderName}/{counter}.png")
+        counter += 1
+    except: break
 
 
 
